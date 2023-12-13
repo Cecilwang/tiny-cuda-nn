@@ -458,7 +458,7 @@ struct alignas(ALIGNED ? next_pot(sizeof(T) * N_DIMS) : 0) vector_t {
 	template <typename U, uint32_t N, bool A>
 	TCNN_HOST_DEVICE vector_t(const vector_t<U, N, A>& other) {
 		TCNN_PRAGMA_UNROLL
-		for (uint32_t i = 0; i < min(N_DIMS, N); ++i) {
+		for (uint32_t i = 0; i < std::min(N_DIMS, N); ++i) {
 			data[i] = (T)other[i];
 		}
 	}
